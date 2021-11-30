@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <div fxHide.gt-xs>
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div>
+    <a [routerLink]="['/']">Home</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+      <li>
+        <a [routerLink]="['/products']">Products</a>
+      </li>
+      <li [ngClass]="{invisible: !(this.authService.isAuthenticated() && this.authService.isAuthorized())}" >
+        <a [routerLink]="['/admin']">Admin panel</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/order']">Shopping cart</a>
+      </li>
+      <li [ngClass]="{invisible: !(this.authService.isAuthenticated())}">
+        <a *ngIf="this.authService.getName()" [routerLink]="['/profile/' + this.authService.getUserId() ]">{{ this.authService.getName()}}</a>
+      </li>
+      <li [ngClass]="{invisible: !(this.authService.isAuthenticated())}">
+        <a (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

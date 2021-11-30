@@ -1,0 +1,26 @@
+<mat-nav-list>
+  <a mat-list-item [routerLink]="['/']" (click)="onSidenavClose()">
+    <mat-icon>home</mat-icon>
+    <span class="nav-caption">Home</span>
+  </a>
+  <a mat-list-item [routerLink]="['/order']">
+    <mat-icon>shopping_cart</mat-icon>
+    <span class="nav-caption">Shopping cart</span>
+  </a>
+  <a mat-list-item [ngClass]="{invisible: !(this.authService.isAuthenticated())}" *ngIf="this.authService.getName()" [routerLink]="['/profile/' + this.authService.getUserId() ]">
+    <mat-icon>account_circle</mat-icon>
+    <span class="nav-caption"> {{ this.authService.getName()}}</span>
+  </a>
+  <a mat-list-item [ngClass]="{invisible: !(this.authService.isAuthenticated() && this.authService.isAuthorized())}" [routerLink]="['/admin']">
+    <mat-icon>admin_panel_settings</mat-icon>
+    <span class="nav-caption">Admin panel</span>
+  </a>
+  <a mat-list-item [routerLink]="['/products']">
+    <mat-icon>store</mat-icon>
+    <span class="nav-caption">Products</span>
+  </a>
+  <a mat-list-item [ngClass]="{ invisible: !(this.authService.isAuthenticated())}" (click)="wrap()">
+    <mat-icon>power_settings_new</mat-icon>
+    <span class="nav-caption">Logout</span>
+  </a>
+</mat-nav-list>

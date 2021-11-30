@@ -1,0 +1,18 @@
+ul.grid-container {
+  display: grid;
+  padding-top: 40px;
+  grid-column-gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+  li.grid-item {
+    list-style-type: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  ul.grid-container {
+    grid-template-columns: auto;
+  }
+}

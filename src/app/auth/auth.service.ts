@@ -1,0 +1,89 @@
+import {Injectable} from "@angular/core";
+import {Router} from "@angular/router";
+import {HttpHeaders} from "@angular/common/http";
+import {JwtHelperService} from '@auth0/angular-jwt';
+import {LoginInterface} from "../interfaces/login.interface";
+import {HttpService} from "../shared/services/http.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+  constructor(private router: Router,
+              public jwtHelper: JwtHelperService,
+              private httpService: HttpService,
+              private snackbar: MatSnackBar) {
+    if (localStorage.getItem('jwtoken') !== null && this.httpHeaders.get('Token') === null) {
+      // @ts-ignore
+      this.httpHeaders = this.httpHeaders.append('Token', localStorage.getItem('jwtoken'));
+    }
+  }
+  private httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
+
+  private static setRoles(roles: Object): void {
+    if (Object.keys(roles).length > 1) {
+      localStorage.setItem('role', '1');
+    } else {
+      localStorage.setItem('role', '0');
+    }
+  }
+
+  public login(user: LoginInterface): void {
+    if (user.username !== '' && user.password !== '') {
+      const userToBeLoggedIn = {
+        username: user.username,
+        password: user.password
+      };
+      this.httpService.post({
+        auth: true,
+        endpoint: '/login',
+        public: true,
+        body: userToBeLoggedIn
+      }).subscribe(
+        data => {
+          const token = data.headers.get('Authorization');
+          const name = data.body.name;
+          const roles = data.body.roles;
+          const id = data.body.id;
+          localStorage.setItem('jwtoken', token);
+          localStorage.setItem('name', name);
+          AuthService.setRoles(roles);
+          localStorage.setItem('id', id);
+          this.router.navigate(['/products']).then();
+        },
+        () => {
+          this.snackbar.open('Er ging iets mis met inloggen, probeer het later opnieuw');
+        });
+    }
+  }
+
+  public isAuthenticated(): boolean {
+    try {
+      const token = localStorage.getItem('jwtoken');
+      // @ts-ignore
+      return !this.jwtHelper.isTokenExpired(token);
+    } catch (Error) {
+      this.logout();
+      return false;
+    }
+  }
+
+  public logout(): void {
+    localStorage.clear();
+    this.router.navigate(['/login']).then();
+  }
+
+  isAuthorized(): boolean {
+    return parseInt(<string>localStorage.getItem('role'), 10) > 0;
+  }
+
+  public getUserId(): string {
+    return <string>localStorage.getItem('id');
+  }
+  public getName(): string {
+    return <string>localStorage.getItem('name');
+  }
+}

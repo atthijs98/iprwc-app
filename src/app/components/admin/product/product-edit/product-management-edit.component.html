@@ -1,0 +1,255 @@
+<!--<div class="row hide-on-med-and-down" style="margin-top: 20px">-->
+<!--  <div class="col s12">-->
+<!--    <a class="waves-effect waves-light btn" style="visibility: hidden">New Product</a>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<mat-card class="mat-elevation-z8">-->
+<!--  <mat-card-content>-->
+<!--    <form (ngSubmit)="onSubmit()" [formGroup]="productForm">-->
+<!--      <mat-form-field>-->
+<!--        <mat-label>Internationale titel</mat-label>-->
+<!--        <input matInput id="englishTitle" type="text" formControlName="englishTitle" maxlength="255" ngModel required>-->
+<!--        <mat-error>-->
+<!--          Internationale titel is verplicht-->
+<!--        </mat-error>-->
+<!--      </mat-form-field>-->
+
+<!--      <mat-form-field>-->
+<!--        <mat-label>Originele Titel</mat-label>-->
+<!--        <input matInput id="originalTitle" type="text" maxlength="255" formControlName="originalTitle" ngModel>-->
+<!--      </mat-form-field>-->
+
+<!--      <mat-form-field>-->
+<!--        <mat-label>Geromaniseerde titel</mat-label>-->
+<!--        <input matInput id="romanizedOriginalTitle" maxlength="255" type="text" formControlName="romanizedOriginalTitle" ngModel>-->
+<!--      </mat-form-field>-->
+
+<!--      <mat-form-field>-->
+<!--        <mat-label>Speelduur</mat-label>-->
+<!--        <input matInput type="text" id="runtime" formControlName="runtime" maxlength="15" required ngModel>-->
+<!--        <mat-error>-->
+<!--          Speelduur is verplicht-->
+<!--        </mat-error>-->
+<!--      </mat-form-field>-->
+
+<!--      <mat-form-field>-->
+<!--        <mat-label>Poster</mat-label>-->
+<!--        <input matInput id="poster" type="text" formControlName="poster" #imagePath maxlength="255" required ngModel>-->
+<!--        <mat-error>-->
+<!--          Poster is verplicht.-->
+<!--        </mat-error>-->
+<!--      </mat-form-field>-->
+
+<!--      <img *ngIf="imagePath.value" [src]="imagePath.value" class="responsive-img" style="max-height: 300px" alt="poster">-->
+
+<!--      <mat-form-field class="full-width-input">-->
+<!--        <mat-label>Plot</mat-label>-->
+<!--        <textarea matInput rows="4" formControlName="plot" maxlength="500" style="height: auto" required ngModel></textarea>-->
+<!--        <mat-error>Plot is verplicht.</mat-error>-->
+<!--      </mat-form-field>-->
+
+<!--      <mat-form-field class="full-width-input">-->
+<!--        <mat-label>Jaar</mat-label>-->
+<!--        <input matInput type="text" class="date-picker" id="year" formControlName="year" required ngModel>-->
+<!--        <mat-error>Jaar is verplicht.</mat-error>-->
+<!--      </mat-form-field>-->
+
+<!--      <mat-form-field class="full-width-input">-->
+<!--        <mat-label>Prijs</mat-label>-->
+<!--        <input matInput type="number" id="price" formControlName="price" required ngModel min="0.01" max="999999.99">-->
+<!--        <mat-error>Prijs is verplicht.</mat-error>-->
+<!--      </mat-form-field>-->
+
+<!--      <mat-form-field class="full-width-input">-->
+<!--        <mat-label>Trailer</mat-label>-->
+<!--        <input matInput type="text" id="trailer" formControlName="trailer" required ngModel minlength="1" maxlength="85">-->
+<!--        <mat-error>Trailer is verplicht.</mat-error>-->
+<!--      </mat-form-field>-->
+
+
+<!--      <div formArrayName="productDirectors">-->
+<!--        <div *ngFor="let director of directors; let i = index" [formGroupName]="i">-->
+<!--          <mat-form-field>-->
+<!--            <mat-label>Name</mat-label>-->
+<!--            <input matInput type="text" id="name" formControlName="name" minlength="1" maxlength="255" required ngModel>-->
+<!--          </mat-form-field>-->
+<!--            <button class="btn waves-effect waves-light" type="button"-->
+<!--                    (click)="onDeleteDirector(i,director.value.id)">-->
+<!--              <i class="material-icons">delete</i>-->
+<!--            </button>-->
+<!--        </div>-->
+<!--        <div class="divider"></div>-->
+<!--        <button mat-raised-button type="button" (click)="onAddDirector()">Regisseur toevoegen</button>-->
+<!--      </div>-->
+
+
+<!--        <div formArrayName="productImages">-->
+<!--          <div *ngFor="let image of images; let i = index" [formGroupName]="i">-->
+<!--            <img [src]="image.value.path" class="responsive-img"/>-->
+<!--            <mat-form-field>-->
+<!--              <mat-label>Path</mat-label>-->
+<!--              <input matInput type="text" minlength="1" maxlength="255" id="path" formControlName="path" required ngModel>-->
+<!--            </mat-form-field>-->
+<!--              <button mat-raised-button type="button" (click)="onDeleteImage(i,image.value.id)">delete</button>-->
+<!--          </div>-->
+<!--          <div class="divider"></div>-->
+<!--          <button mat-raised-button type="button" (click)="onAddImage()">Afbeelding toevoegen</button>-->
+<!--        </div>-->
+
+
+<!--      <button mat-raised-button color="primary" style="margin-right: 16px" type="submit" name="action" [disabled]="!productForm.valid">-->
+<!--        Opslaan-->
+<!--      </button>-->
+<!--      <button mat-raised-button color="accent" type="button" name="action"-->
+<!--              (click)="onCancel()">Annuleren-->
+<!--      </button>-->
+<!--    </form>-->
+<!--  </mat-card-content>-->
+<!--</mat-card>-->
+
+<div class="row hide-on-med-and-down" style="margin-top: 20px">
+  <div class="col s12">
+    <a class="waves-effect waves-light btn" style="visibility: hidden">New Product</a>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <form class="col s12" (ngSubmit)="onSubmit()" [formGroup]="productForm">
+      <div class="row">
+
+        <div class="input-field col s12">
+          <button class="btn waves-effect waves-light" type="submit" name="action" [disabled]="!productForm.valid">
+            Opslaan
+            <i class="material-icons right">check</i>
+          </button>
+          <button class="btn waves-effect waves-light" type="button" name="action"
+                  (click)="onCancel()">Annuleren
+            <i class="material-icons right">cancel</i>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <mat-form-field class="input-field col m4 l4 s12">
+          <input matInput id="englishTitle" type="text" formControlName="englishTitle" maxlength="255" required>
+          <mat-label for="englishTitle">Internationale titel</mat-label>
+        </mat-form-field>
+        <div class="input-field col m4 l4 s12">
+          <input id="originalTitle" type="text" maxlength="255" formControlName="originalTitle">
+          <label for="originalTitle">Originele titel</label>
+        </div>
+        <div class="input-field col m4 l4 s12">
+          <input id="romanizedOriginalTitle" maxlength="255" type="text" formControlName="romanizedOriginalTitle">
+          <label for="romanizedOriginalTitle">Titel geromaniseerd</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <input type="text" id="runtime" formControlName="runtime" maxlength="15" required
+                 >
+          <label for="runtime">Speelduur</label>
+        </div>
+        <div class="input-field col s8">
+          <input id="poster" type="text" formControlName="poster" #imagePath maxlength="255" required
+                 >
+          <label for="poster">Poster</label>
+
+        </div>
+      </div>
+      <div class="row" *ngIf="imagePath.value">
+        <div class="col s12">
+          <img [src]="imagePath.value" class="responsive-img" style="max-height: 300px">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+            <textarea id="plot" class="materialize-textarea" rows="4" formControlName="plot" maxlength="500"
+                      style="height: auto"
+                      required
+                      ></textarea>
+          <label for="plot">Plot</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" class="date-picker" id="year" formControlName="year" required
+                 >
+          <label for="year">Jaar</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="number" id="price" formControlName="price" required
+                  min="0.01"
+                 max="999999.99">
+          <label for="price">Prijs</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" id="trailer" formControlName="trailer" required
+                  minlength="1"
+                 maxlength="85">
+          <label for="trailer">Trailer</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12" formArrayName="directors">
+          <div
+            class="row"
+            *ngFor="let director of directors; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="input-field col s9">
+              <input type="text" id="name" formControlName="name" minlength="1" maxlength="255" required>
+              <label for="name">Name</label>
+            </div>
+            <div class="input-field col s3">
+              <button class="btn waves-effect waves-light" type="button"
+                      (click)="onDeleteDirector(i,director.value.id)">
+                <i class="material-icons">delete</i>
+              </button>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <div class="input-field col s12">
+              <button class="btn waves-effect waves-light" type="button" (click)="onAddDirector()">Regisseur toevoegen
+                <i class="material-icons right">add</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12" formArrayName="images">
+          <div
+            class="row"
+            *ngFor="let image of images; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="col s2">
+              <img [src]="image.value.path" class="responsive-img"/>
+            </div>
+            <div class="input-field col s8">
+              <input type="text" minlength="1" maxlength="255" id="path" formControlName="path" required>
+              <label for="path">Path</label>
+            </div>
+            <div class="input-field col s2">
+              <button class="btn waves-effect waves-light" type="button" (click)="onDeleteImage(i,image.value.id)">
+                <i class="material-icons">delete</i>
+              </button>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <div class="input-field col s12">
+              <button class="btn waves-effect waves-light" type="button" (click)="onAddImage()">Afbeelding toevoegen
+                <i class="material-icons right">add</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

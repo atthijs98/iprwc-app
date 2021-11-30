@@ -1,0 +1,11 @@
+<mat-sidenav-container [ngStyle]="{'background-image': 'url(../../assets/images/'+ backgroundImage + ')', 'background-repeat': 'no-repeat', 'background-size': 'cover', 'background-color': '#fafafa'}">
+  <mat-sidenav #sidenav role="navigation">
+    <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header *ngIf="showHead" (sidenavToggle)="sidenav.toggle()"></app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

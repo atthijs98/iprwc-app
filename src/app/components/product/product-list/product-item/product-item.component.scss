@@ -1,0 +1,23 @@
+mat-card:first-child {
+  margin: 0 0 40px 0;
+}
+
+mat-card {
+  margin: 40px 0 40px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+mat-card-header{
+  flex-shrink: 0;
+}
+
+mat-card-content {
+  flex-grow: 1;
+  overflow: auto;
+}
+.example-header-image {
+  /*background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');*/
+  background-size: cover;
+}

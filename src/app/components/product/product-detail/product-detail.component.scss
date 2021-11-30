@@ -1,0 +1,27 @@
+/*img {*/
+/*  max-width: 50%;*/
+/*  position: relative;*/
+/*  min-height: 100%;*/
+/*  height: auto;*/
+/*}*/
+
+section {
+  margin-bottom: 60px;
+}
+
+div.card-footer {
+  background-color: transparent;
+  border: none;
+}
+
+div.card-body {
+  padding: 14px;
+}
+section.trailer {
+  iframe {
+    width: 100%;
+  }
+}
+youtube-player {
+  overflow: hidden;
+}

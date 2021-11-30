@@ -1,0 +1,15 @@
+mat-card {
+  width: 77.6%;
+  margin: 0 auto;
+  padding: 1.4%;
+}
+
+mat-form-field {
+  display: block;
+}
+@media only screen and (max-width: 600px) {
+ mat-card {
+   width: 100%;
+   margin: 14px auto;
+ }
+}

@@ -1,0 +1,25 @@
+#main {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 60px;
+  grid-row-gap: 60px;
+  padding: 60px 0px;
+}
+
+button, mat-icon {
+  color: #3f51b5;
+  font-size: 20px;
+}
+
+button {
+  text-transform: capitalize;
+  text-align: center;
+}
+
+@media only screen and (max-width: 700px) {
+  #main {
+    grid-template-columns: 1fr;
+  }
+}
