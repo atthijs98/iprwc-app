@@ -92,7 +92,6 @@ export class ProductManagementEditComponent implements OnInit {
         productDirectors: new FormArray([]),
         productImages: new FormArray([])
       });
-      console.log(product);
       englishTitle = product['englishTitle'];
       originalTitle = product['originalTitle'];
       romanizedOriginalTitle = product.romanizedOriginalTitle;
@@ -164,32 +163,29 @@ export class ProductManagementEditComponent implements OnInit {
       productDirectors: productDirectors,
       productImages: productImages
     });
-    console.log(this.productForm);
   }
 
-
-
   onSubmit(): void {
-    console.log(this.productForm.value);
-   // if (this.editMode) {
-     // this.productService.updateProduct(this.id, this.productForm.value);
-      // for (let director of this.directorsToBeDeleted) {
-      //   this.httpService.deleteDirector(director);
-      // }
-      // for (let image of this.imagesToBeDeleted) {
-      //   this.httpService.deleteImage(image);
-      // }
-   // } else {
-     // this.productService.addProduct(this.productForm.value);
-   // }
-    // this.imagesToBeDeleted = [];
-    // this.directorsToBeDeleted = [];
+    if (this.editMode) {
+      console.log(this.productForm.value);
+      this.productService.updateProduct(this.id, this.productForm.value);
+      for (let director of this.directorsToBeDeleted) {
+        // this.httpService.deleteDirector(director);
+      }
+      for (let image of this.imagesToBeDeleted) {
+        // this.httpService.deleteImage(this.id, image);
+      }
+    } else {
+      this.productService.addProduct(this.productForm.value);
+    }
+    this.imagesToBeDeleted = [];
+    this.directorsToBeDeleted = [];
   }
 
   onCancel(): void {
     this.imagesToBeDeleted = [];
     this.directorsToBeDeleted = [];
-    this.router.navigate(['../'],{relativeTo: this.route});
+    this.router.navigate(['product-management']);
   }
 
   get images() {

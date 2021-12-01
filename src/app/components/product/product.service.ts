@@ -5,6 +5,7 @@ import {HttpService} from "../../shared/services/http.service";
 import {catchError, tap} from "rxjs/operators";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {newArray} from "@angular/compiler/src/util";
+import {ProductImage} from "../../models/productImage.model";
 
 @Injectable()
 export class ProductService {
@@ -73,6 +74,31 @@ export class ProductService {
         this.snackbar.open('Er ging iets mis met inloggen, probeer het later opnieuw')
       }
     );
+  }
+
+  updateProduct(id: number, updatedProduct: Product) {
+    for (let i = 0; i < this.products.length; i++) {
+      if (id == this.products[i]['id']) {
+        this.products[i] = updatedProduct;
+        this.productsChanged.next(this.products.slice());
+      }
+    }
+    this.putProduct(id, updatedProduct);
+  }
+
+  putProduct(id: number, productToUpdate: Product): Subscription {
+    return this.httpService.put({
+      endpoint: `/admin/product/${id}`,
+      public: false,
+      body: JSON.stringify(productToUpdate)
+    }).subscribe(
+      data => {
+        console.log(data);
+      },
+      () => {
+        this.snackbar.open('Er ging iets mis met update van het product, probeer het later opnieuw');
+      }
+    )
   }
 
   setProducts(products: Product[]): void {

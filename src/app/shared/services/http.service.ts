@@ -34,6 +34,17 @@ export class HttpService {
     );
   }
 
+  put(options: HttpOptions): Observable<any> {
+    return (
+      this.http.put(
+        this.generateUrl(options.public, options.endpoint), options.body, {
+          observe: 'response',
+          headers: this.getTokenHeader()
+        }
+      )
+    );
+  }
+
   get(options: HttpOptions): Observable<any> {
     return (
       this.http.get(

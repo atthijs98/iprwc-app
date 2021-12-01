@@ -5,14 +5,14 @@
       <mat-card-subtitle> Sign in with your account</mat-card-subtitle>
       <mat-form-field class="full-width-input">
         <mat-label>Enter your email</mat-label>
-        <input matInput placeholder="johnDoe@example.com" id="username" type="email" name="username" maxlength="255"  required email #email="">
+        <input matInput placeholder="johnDoe@example.com" id="username" type="email" name="username" maxlength="255"  ngModel required email #email="ngModel">
         <mat-error>
           Please provide a valid email address
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <mat-label>Enter your password</mat-label>
-        <input matInput id="password" type="password" name="password" maxlength="255"  required #password="">
+        <input matInput id="password" type="password" name="password" maxlength="255"  ngModel required #password="ngModel">
         <mat-error>
           Please provide a valid password
         </mat-error>

@@ -11,10 +11,9 @@ import {GeneralStateService} from "../../../shared/services/general-state.servic
 })
 export class LoginComponent implements OnInit, OnDestroy {
   public BACKGROUND_IMAGE: BackgroundImages = 'login-bg.jpg';
-  @ViewChild('formGroup', {static: false}) formGroup: NgForm | undefined;
+  @ViewChild('formGroup', {static: false}) formGroup: any;
 
   constructor(private router: Router, private authService: AuthService, private generalStateService: GeneralStateService) {
-    this.formGroup = undefined;
     this.setBackgroundImage();
   }
 
@@ -22,12 +21,15 @@ export class LoginComponent implements OnInit, OnDestroy {
     // if (localStorage.getItem('name') !== null) {
     //   this.router.navigate(['home']);
     // }
+    this.initForm();
+  }
+
+  initForm(): void {
+
   }
 
   onSubmit(): void {
-    // @ts-ignore
     if (this.formGroup.valid) {
-      // @ts-ignore
       const formValues = this.formGroup.form.value;
       this.authService.login(formValues);
     }
