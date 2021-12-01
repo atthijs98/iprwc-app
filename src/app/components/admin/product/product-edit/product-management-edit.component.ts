@@ -45,7 +45,7 @@ export class ProductManagementEditComponent implements OnInit {
       productDirectors = new FormArray([]),
       productImages = new FormArray([]);
 
-   if (this.editMode) {
+    if (this.editMode) {
       const product = this.productService.getProduct(this.id);
       this.productForm = new FormGroup({
         englishTitle: new FormControl('', [
@@ -189,7 +189,7 @@ export class ProductManagementEditComponent implements OnInit {
   onCancel(): void {
     this.imagesToBeDeleted = [];
     this.directorsToBeDeleted = [];
-    this.router.navigate(['../'], {relativeTo: this.route});
+    this.router.navigate(['../'],{relativeTo: this.route});
   }
 
   get images() {

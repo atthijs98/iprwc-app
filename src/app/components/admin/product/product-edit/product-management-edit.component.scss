@@ -1,11 +1,52 @@
 mat-card {
   width: 77.6%;
   margin: 0 auto;
-  padding: 1.4%;
+  padding: 14px;
+}
+.preview-image {
+  width: 100%;
+  max-width: 50%;
+}
+
+.responsive-img {
+  max-height: 300px;
 }
 
 mat-form-field {
   display: block;
+}
+
+textarea {
+  height: auto;
+}
+
+div.array {
+  margin-bottom: 14px;
+  margin-top: 14px;
+  div.row-container {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 14px;
+
+    div.rij {
+      mat-form-field {
+        display: inline-block;
+      }
+
+      button {
+        display: inline-block;
+      }
+
+      img {
+        display: inline-block;
+      }
+    }
+  }
+}
+div.buttons {
+  margin-top: 14px;
+  button:first-child {
+    margin-right: 14px;
+  }
 }
 @media only screen and (max-width: 600px) {
  mat-card {
