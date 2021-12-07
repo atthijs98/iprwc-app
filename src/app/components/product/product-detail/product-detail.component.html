@@ -25,7 +25,7 @@
 </section>
 
 <section class="mat-elevation-z8">
-  <ngb-carousel [animation]="false">
+  <ngb-carousel [animation]="false" [interval]="1000">
     <ng-template ngbSlide *ngFor="let image of product.productImages">
       <div class="picsum-img-wrapper">
         <img [src]="image.path" [alt]="image.description" />

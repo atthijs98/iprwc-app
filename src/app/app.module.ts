@@ -11,10 +11,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {MaterialModule} from "./material/material.module";
 import {CommonModule} from "@angular/common";
 import {YouTubePlayerModule} from "@angular/youtube-player";
-import {MatCarouselModule} from "@ngbmodule/material-carousel";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {AppRoutingModule} from "./app-routing.module";
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { HeaderComponent } from './components/navigation/header/header.component';
 import { SidenavListComponent } from './components/navigation/sidenav-list/sidenav-list.component';
 import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
@@ -32,6 +30,7 @@ import { ProductManagementListComponent } from './components/admin/product/produ
 import {ProductManagementStartComponent} from "./components/admin/product/product-start/product-management-start.component";
 import {ProductManagementComponent} from "./components/admin/product/product-management.component";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {NgbModule, NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -54,7 +53,7 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     ProductManagementStartComponent
 
   ],
-    imports: [
+  imports: [
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
@@ -64,11 +63,11 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
         MaterialModule,
         HttpClientModule,
         ReactiveFormsModule,
-        MatCarouselModule,
         YouTubePlayerModule,
-        NgbModule,
-        MatButtonToggleModule
-    ],
+        MatButtonToggleModule,
+        NgbCarouselModule,
+        NgbModule
+  ],
   providers: [
     {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
     JwtHelperService,
