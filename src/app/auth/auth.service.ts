@@ -55,7 +55,9 @@ export class AuthService {
           this.router.navigate(['/products']).then();
         },
         () => {
-          this.snackbar.open('Er ging iets mis met inloggen, probeer het later opnieuw');
+          this.snackbar.open('Er ging iets mis met inloggen, probeer het later opnieuw', '',{
+            duration: 3000
+          });
         });
     }
   }

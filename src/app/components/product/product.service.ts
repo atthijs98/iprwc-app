@@ -68,10 +68,14 @@ export class ProductService {
       body: JSON.stringify(product)
     }).subscribe(
       data => {
-        console.log(data);
+        this.snackbar.open('Product succesvol toegevoegd', '', {
+          duration: 3000
+        })
       },
       () => {
-        this.snackbar.open('Er ging iets mis met inloggen, probeer het later opnieuw')
+        this.snackbar.open('Er ging iets mis met het toevoegen van het product, probeer het later opnieuw', '', {
+          duration: 3000
+        })
       }
     );
   }
@@ -93,10 +97,14 @@ export class ProductService {
       body: JSON.stringify(productToUpdate)
     }).subscribe(
       data => {
-        console.log(data);
+        this.snackbar.open('Product successvol bijgewerkt.', '', {
+          duration: 3000
+        });
       },
       () => {
-        this.snackbar.open('Er ging iets mis met update van het product, probeer het later opnieuw');
+        this.snackbar.open('Er ging iets mis met update van het product, probeer het later opnieuw', '', {
+          duration: 3000
+        });
       }
     )
   }

@@ -2,15 +2,15 @@
   <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-4">
-        <img style="width: 100%" [src]="product.poster" alt="{{product.englishTitle}}" />
+        <img class="poster" [src]="product.poster" alt="{{product.englishTitle}}" />
       </div>
       <div class="col-md-8">
         <div class="card-body">
           <mat-card-title>{{product.englishTitle}}</mat-card-title>
           <mat-card-subtitle *ngIf="product.originalTitle && product.romanizedOriginalTitle">{{product.originalTitle}} | {{product.romanizedOriginalTitle}}</mat-card-subtitle>
           <mat-card-subtitle *ngIf="this.xor(product.originalTitle, product.romanizedOriginalTitle)"><span *ngIf="product.originalTitle">{{product.originalTitle}}</span><span *ngIf="product.romanizedOriginalTitle">{{product.romanizedOriginalTitle}}</span></mat-card-subtitle>
-          <p class="card-text"><p><span style="text-transform: uppercase;">Directed By</span>
-<!--          <span style="font-weight: bold" *ngFor="let director of product.productDirectors ; last as isLast"> <span *ngIf="!isLast"> {{director.name}},</span>  <span *ngIf="isLast"> {{director.name}}</span> </span>-->
+          <p class="card-text"><p><span class="directed-by">Directed By</span>
+          <span class="director-loop" *ngFor="let director of product.productDirectors ; last as isLast"> <span *ngIf="!isLast"> {{director.name}},</span>  <span *ngIf="isLast"> {{director.name}}</span> </span>
         </p>
           <p>{{product.year}} | {{product.runtime}} mins
           <p>{{product.plot}}</p>
@@ -24,15 +24,15 @@
   </div>
 </section>
 
-<!--<section class="mat-elevation-z8">-->
-<!--  <ngb-carousel [animation]="false" [interval]="false">-->
-<!--    <ng-template ngbSlide *ngFor="let image of product.productImages">-->
-<!--      <div class="picsum-img-wrapper">-->
-<!--        <img [src]="image.path" [alt]="image.description" />-->
-<!--      </div>-->
-<!--    </ng-template>-->
-<!--  </ngb-carousel>-->
-<!--</section>-->
+<section class="mat-elevation-z8">
+  <ngb-carousel [animation]="false">
+    <ng-template ngbSlide *ngFor="let image of product.productImages">
+      <div class="picsum-img-wrapper">
+        <img [src]="image.path" [alt]="image.description" />
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</section>
 
 <section class="mat-elevation-z8 trailer">
   <div class="embed-responsive embed-responsive-16by9">

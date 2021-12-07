@@ -1,9 +1,11 @@
-/*img {*/
-/*  max-width: 50%;*/
-/*  position: relative;*/
-/*  min-height: 100%;*/
-/*  height: auto;*/
-/*}*/
+div.picsum-img-wrapper {
+  img {
+    max-width: 50%;
+    position: relative;
+    min-height: 100%;
+    height: auto;
+  }
+}
 
 section {
   margin-bottom: 60px;
@@ -24,4 +26,15 @@ section.trailer {
 }
 youtube-player {
   overflow: hidden;
+}
+
+img.poster {
+  width: 100%;
+}
+span.directed-by {
+  text-transform: uppercase;
+}
+
+span.director-loop {
+  font-weight: bold;
 }

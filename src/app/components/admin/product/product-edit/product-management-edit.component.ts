@@ -167,7 +167,6 @@ export class ProductManagementEditComponent implements OnInit {
 
   onSubmit(): void {
     if (this.editMode) {
-      console.log(this.productForm.value);
       this.productService.updateProduct(this.id, this.productForm.value);
       for (let director of this.directorsToBeDeleted) {
         // this.httpService.deleteDirector(director);
@@ -177,6 +176,8 @@ export class ProductManagementEditComponent implements OnInit {
       }
     } else {
       this.productService.addProduct(this.productForm.value);
+      this.productForm.reset();
+      this.router.navigate(['product-management']);
     }
     this.imagesToBeDeleted = [];
     this.directorsToBeDeleted = [];
