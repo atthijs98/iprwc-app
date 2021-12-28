@@ -30,7 +30,7 @@ import { ProductManagementListComponent } from './components/admin/product/produ
 import {ProductManagementStartComponent} from "./components/admin/product/product-start/product-management-start.component";
 import {ProductManagementComponent} from "./components/admin/product/product-management.component";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
-import {NgbModule, NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
+import { MatCarouselModule } from '@ngbmodule/material-carousel';
 
 @NgModule({
   declarations: [
@@ -65,8 +65,7 @@ import {NgbModule, NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
         ReactiveFormsModule,
         YouTubePlayerModule,
         MatButtonToggleModule,
-        NgbCarouselModule,
-        NgbModule
+        MatCarouselModule.forRoot()
   ],
   providers: [
     {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},

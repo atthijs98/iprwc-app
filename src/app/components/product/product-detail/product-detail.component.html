@@ -25,13 +25,20 @@
 </section>
 
 <section class="mat-elevation-z8">
-  <ngb-carousel [animation]="false" [interval]="1000">
-    <ng-template ngbSlide *ngFor="let image of product.productImages">
-      <div class="picsum-img-wrapper">
-        <img [src]="image.path" [alt]="image.description" />
-      </div>
-    </ng-template>
-  </ngb-carousel>
+  <mat-carousel
+    timings="200ms ease-in"
+    [autoplay]="true"
+    [interval]="6000"
+    color="accent"
+    [hideIndicators]="false"
+    [hideArrows]="false"
+    >
+    <mat-carousel-slide
+      *ngFor="let slide of slides; let i = index"
+      [image]="slide.path"
+      [hideOverlay]="false"
+    ></mat-carousel-slide>
+  </mat-carousel>
 </section>
 
 <section class="mat-elevation-z8 trailer">

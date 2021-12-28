@@ -167,6 +167,7 @@ export class ProductManagementEditComponent implements OnInit {
 
   onSubmit(): void {
     if (this.editMode) {
+      this.productForm.value.id = this.id;
       this.productService.updateProduct(this.id, this.productForm.value);
       for (let director of this.directorsToBeDeleted) {
         // this.httpService.deleteDirector(director);
