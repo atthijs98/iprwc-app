@@ -1,10 +1,10 @@
-import {ProductImage} from "./productImage.model";
-import {ProductDirector} from "./productDirector.model";
+import { ProductImage } from './productImage.model';
+import { ProductDirector } from './productDirector.model';
 
 export class Product {
   public id: number;
   public englishTitle: string;
-  public originalTitle?: string;
+  public originalTitle: string;
   public romanizedOriginalTitle: string;
   public runtime: string;
   public poster: string;

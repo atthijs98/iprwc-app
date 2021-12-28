@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from "../../../models/product.model";
-import {ProductService} from "../../product/product.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import { Product } from '../../../models/product.model';
+import { ProductService } from '../../product/product.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./product-management.component.scss']
 })
 export class ProductManagementComponent implements OnInit {
-  selectedProduct?: Product;
+  selectedProduct: Product;
 
   constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) { }
 
@@ -23,6 +23,5 @@ export class ProductManagementComponent implements OnInit {
 
   newProduct(): void {
     this.router.navigate(['new'], {relativeTo: this.route});
-
   }
 }

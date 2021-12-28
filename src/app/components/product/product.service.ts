@@ -1,11 +1,9 @@
-import {EventEmitter, Injectable} from "@angular/core";
-import {Product} from "../../models/product.model";
-import {Observable, Subject, Subscription, throwError} from "rxjs";
-import {HttpService} from "../../shared/services/http.service";
-import {catchError, tap} from "rxjs/operators";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {newArray} from "@angular/compiler/src/util";
-import {ProductImage} from "../../models/productImage.model";
+import { EventEmitter, Injectable } from '@angular/core';
+import { Product } from '../../models/product.model';
+import { Observable, Subject, Subscription, throwError } from 'rxjs';
+import { HttpService } from '../../shared/services/http.service';
+import { catchError, tap } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class ProductService {
@@ -126,8 +124,7 @@ export class ProductService {
       );
   }
 
-  // @ts-ignore
-  handleError(error): Observable<never> {
+  handleError(error: any): Observable<any> {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // client-side error
@@ -140,5 +137,4 @@ export class ProductService {
     }
     return throwError(errorMessage);
   }
-
 }

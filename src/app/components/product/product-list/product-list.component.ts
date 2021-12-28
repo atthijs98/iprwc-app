@@ -1,7 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ProductService} from "../product.service";
-import {Product} from "../../../models/product.model";
-import {Subscription} from "rxjs";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ProductService } from '../product.service';
+import { Product } from '../../../models/product.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -9,8 +9,8 @@ import {Subscription} from "rxjs";
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  products: Product[] | undefined;
-  subscription: Subscription | undefined;
+  products: Product[];
+  subscription: Subscription;
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
@@ -23,7 +23,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // @ts-ignore
     this.subscription.unsubscribe();
   }
 

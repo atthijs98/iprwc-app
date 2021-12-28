@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {GeneralStateService} from "../../shared/services/general-state.service";
-import {Product} from "../../models/product.model";
-import {ProductService} from "./product.service";
+import { Product } from '../../models/product.model';
+import { ProductService } from './product.service';
 
 @Component({
   selector: 'app-product',
@@ -9,7 +8,7 @@ import {ProductService} from "./product.service";
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-  selectedProduct: Product | undefined;
+  selectedProduct: Product;
 
   constructor(private productService: ProductService) {}
 

@@ -1,9 +1,9 @@
-import {DataSource} from "@angular/cdk/collections";
-import {Product} from "../../../../models/product.model";
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
-import {map} from "rxjs/operators";
-import {merge, Observable, of as observableOf} from "rxjs";
+import { DataSource } from '@angular/cdk/collections';
+import { Product } from '../../../../models/product.model';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { map } from 'rxjs/operators';
+import { merge, Observable, of as observableOf } from 'rxjs';
 
 export class ProductManagementListDatasource extends DataSource<Product> {
   data: Product[] = [];

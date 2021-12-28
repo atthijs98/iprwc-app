@@ -1,9 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {HttpService} from "../../../shared/services/http.service";
-import {GeneralStateService} from "../../../shared/services/general-state.service";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpService } from '../../../shared/services/http.service';
+import { GeneralStateService } from '../../../shared/services/general-state.service';
 
 // @ts-ignore
 export const passwordMatchValidator: ValidatorFn = (formGroup: FormGroup): ValidationErrors | null => {
@@ -11,7 +11,7 @@ export const passwordMatchValidator: ValidatorFn = (formGroup: FormGroup): Valid
   if (formGroup.get('password').value === formGroup.get('repeatPassword').value) {
     return null;
   } else {
-    return {passwordMismatch: true};
+    return { passwordMismatch: true };
   }
 };
 

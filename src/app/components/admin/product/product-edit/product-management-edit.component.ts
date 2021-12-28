@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {ProductService} from "../../../product/product.service";
-import {HttpService} from "../../../../shared/services/http.service";
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Product} from "../../../../models/product.model";
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ProductService } from '../../../product/product.service';
+import { HttpService } from '../../../../shared/services/http.service';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-management-edit',
@@ -11,11 +10,11 @@ import {Product} from "../../../../models/product.model";
   styleUrls: ['./product-management-edit.component.scss']
 })
 export class ProductManagementEditComponent implements OnInit {
-  id!: number;
+  id: number;
   editMode = false;
-  imagesToBeDeleted = [];
-  directorsToBeDeleted = [];
-  productForm!: FormGroup;
+  imagesToBeDeleted: number[] = [];
+  directorsToBeDeleted: number[] = [];
+  productForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
               private productService: ProductService,
@@ -199,13 +198,11 @@ export class ProductManagementEditComponent implements OnInit {
   }
 
   onDeleteImage(index: number, id: number) {
-    // @ts-ignore
     this.imagesToBeDeleted.push(id);
     (<FormArray>this.productForm.get('productImages')).removeAt(index);
   }
 
   onDeleteDirector(index: number, id: number) {
-    // @ts-ignore
     this.directorsToBeDeleted.push(id);
     (<FormArray>this.productForm.get('productDirectors')).removeAt(index);
   }
@@ -225,5 +222,4 @@ export class ProductManagementEditComponent implements OnInit {
       })
     )
   }
-
 }

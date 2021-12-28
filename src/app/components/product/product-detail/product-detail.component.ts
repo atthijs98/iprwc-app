@@ -1,12 +1,12 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {Product} from "../../../models/product.model";
-import {ProductService} from "../product.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {HttpService} from "../../../shared/services/http.service";
-import {MatDialog} from "@angular/material/dialog";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
-import {ProductImage} from "../../../models/productImage.model";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Product } from '../../../models/product.model';
+import { ProductService } from '../product.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { HttpService } from '../../../shared/services/http.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { ProductImage } from '../../../models/productImage.model';
 import { MatCarouselModule, MatCarouselComponent } from '@ngbmodule/material-carousel';
 
 @Component({
@@ -15,9 +15,9 @@ import { MatCarouselModule, MatCarouselComponent } from '@ngbmodule/material-car
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  product!: Product;
-  id!: number;
-  slides!: ProductImage[];
+  product: Product;
+  id: number;
+  slides: ProductImage[];
   @ViewChild('matCarousel') matCarousel: MatCarouselComponent;
 
   constructor(private productService: ProductService,

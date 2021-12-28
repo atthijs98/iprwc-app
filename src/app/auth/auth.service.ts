@@ -1,19 +1,21 @@
-import {Injectable} from "@angular/core";
-import {Router} from "@angular/router";
-import {HttpHeaders} from "@angular/common/http";
-import {JwtHelperService} from '@auth0/angular-jwt';
-import {LoginInterface} from "../interfaces/login.interface";
-import {HttpService} from "../shared/services/http.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { LoginInterface } from '../interfaces/login.interface';
+import { HttpService } from '../shared/services/http.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
   constructor(private router: Router,
               public jwtHelper: JwtHelperService,
               private httpService: HttpService,
               private snackbar: MatSnackBar) {
+
     if (localStorage.getItem('jwtoken') !== null && this.httpHeaders.get('Token') === null) {
       // @ts-ignore
       this.httpHeaders = this.httpHeaders.append('Token', localStorage.getItem('jwtoken'));

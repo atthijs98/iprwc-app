@@ -1,6 +1,6 @@
-import {ChangeDetectorRef, Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
-import {NavigationStart, Router} from "@angular/router";
-import {GeneralStateService} from "./shared/services/general-state.service";
+import { ChangeDetectorRef, Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
+import { GeneralStateService } from './shared/services/general-state.service';
 
 @Component({
   selector: 'app-root',
