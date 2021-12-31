@@ -31,6 +31,11 @@ import { ProductManagementStartComponent } from './components/admin/product/prod
 import { ProductManagementComponent } from './components/admin/product/product-management.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCarouselModule } from '@ngbmodule/material-carousel';
+import { UserComponent } from './components/admin/user/user.component';
+import { UserStartComponent } from './components/admin/user/user-start/user-start.component';
+import { UserListComponent } from './components/admin/user/user-list/user-list.component';
+import { UserDetailComponent } from './components/admin/user/user-detail/user-detail.component';
+import {UserService} from "./shared/services/user.service";
 
 @NgModule({
   declarations: [
@@ -50,8 +55,11 @@ import { MatCarouselModule } from '@ngbmodule/material-carousel';
     ProductManagementComponent,
     ProductManagementEditComponent,
     ProductManagementListComponent,
-    ProductManagementStartComponent
-
+    ProductManagementStartComponent,
+    UserComponent,
+    UserStartComponent,
+    UserListComponent,
+    UserDetailComponent
   ],
   imports: [
         BrowserModule,
@@ -71,7 +79,8 @@ import { MatCarouselModule } from '@ngbmodule/material-carousel';
     {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
     JwtHelperService,
     GeneralStateService,
-    ProductService
+    ProductService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

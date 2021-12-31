@@ -1,0 +1,31 @@
+.full-width-table {
+  width: 100%;
+}
+.data-table {
+  width: 80%;
+  margin: 0 auto;
+}
+.delete-btn {
+  cursor: pointer;
+}
+
+.delete-btn > mat-icon {
+  color: red;
+}
+
+td.mat-cell:last-of-type, th.mat-header-cell:last-of-type {
+  padding-right: 0;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:disabled > mat-icon {
+  color: rgba(0,0,0,.12);
+}
