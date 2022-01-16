@@ -39,8 +39,8 @@ export class ProductDetailComponent implements OnInit {
   }
 
   toShoppingList(): void {
-    // this.productService.addToShoppingList(this.product);
-    // this.snackBar.open('product added to shopping cart!', '', {duration: 3000});
+    this.productService.addToShoppingList(this.product);
+    this.snackbar.open('product added to shopping cart!', '', {duration: 3000});
   }
 
   trustSrcUrl(data: string): SafeUrl {

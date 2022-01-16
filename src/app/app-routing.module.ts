@@ -12,6 +12,12 @@ import { Role } from './models/roles.model';
 import { ProductManagementComponent } from './components/admin/product/product-management.component';
 import { ProductManagementStartComponent } from './components/admin/product/product-start/product-management-start.component';
 import { ProductManagementEditComponent } from './components/admin/product/product-edit/product-management-edit.component';
+import { UserComponent } from './components/admin/user/user.component';
+import { UserResolverService } from './shared/resolvers/user-resolver.service';
+import { UserStartComponent } from './components/admin/user/user-start/user-start.component';
+import { OrderComponent } from './components/order/order.component';
+import { OrderStartComponent } from './components/order/order-start/order-start.component';
+import { CheckoutComponent } from './components/order/checkout/checkout.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/products', pathMatch: 'full'},
@@ -26,6 +32,13 @@ const routes: Routes = [
       {path: '', component: ProductManagementStartComponent },
       {path: 'new', component: ProductManagementEditComponent},
       {path: ':id/edit', component: ProductManagementEditComponent}
+    ]},
+  {path: 'user-management', component: UserComponent, data: {roles: [Role.Admin]}, canActivate: [AuthGuardService], resolve: [UserResolverService], children: [
+      {path: '', component: UserStartComponent },
+    ]},
+  {path: 'order', component: OrderComponent, canActivate: [AuthGuardService], children: [
+      {path: '', component: OrderStartComponent},
+      {path: 'checkout', component: CheckoutComponent}
     ]},
   {path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];

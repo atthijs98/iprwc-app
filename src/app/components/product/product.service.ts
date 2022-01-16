@@ -4,6 +4,7 @@ import { Observable, Subject, Subscription, throwError } from 'rxjs';
 import { HttpService } from '../../shared/services/http.service';
 import { catchError, tap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ShoppingListService } from '../order/shopping-list/shopping-list.service';
 
 @Injectable()
 export class ProductService {
@@ -13,7 +14,8 @@ export class ProductService {
   private products: Product[] = [];
 
   constructor(private httpService: HttpService,
-              private snackbar: MatSnackBar) {}
+              private snackbar: MatSnackBar,
+              private shoppingListService: ShoppingListService) {}
 
   getProducts(): Product[] {
     return this.products.slice();
@@ -122,6 +124,10 @@ export class ProductService {
       }),
       catchError(this.handleError)
       );
+  }
+
+  addToShoppingList(product: Product): void {
+    this.shoppingListService.addProduct(product);
   }
 
   handleError(error: any): Observable<any> {

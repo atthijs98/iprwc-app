@@ -35,7 +35,12 @@ import { UserComponent } from './components/admin/user/user.component';
 import { UserStartComponent } from './components/admin/user/user-start/user-start.component';
 import { UserListComponent } from './components/admin/user/user-list/user-list.component';
 import { UserDetailComponent } from './components/admin/user/user-detail/user-detail.component';
-import {UserService} from "./shared/services/user.service";
+import { UserService } from './shared/services/user.service';
+import { OrderComponent } from './components/order/order.component';
+import { ShoppingListComponent } from './components/order/shopping-list/shopping-list.component';
+import { OrderStartComponent } from './components/order/order-start/order-start.component';
+import { CheckoutComponent } from './components/order/checkout/checkout.component';
+import { ShoppingListService } from './components/order/shopping-list/shopping-list.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +64,11 @@ import {UserService} from "./shared/services/user.service";
     UserComponent,
     UserStartComponent,
     UserListComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    OrderComponent,
+    ShoppingListComponent,
+    OrderStartComponent,
+    CheckoutComponent
   ],
   imports: [
         BrowserModule,
@@ -80,7 +89,8 @@ import {UserService} from "./shared/services/user.service";
     JwtHelperService,
     GeneralStateService,
     ProductService,
-    UserService
+    UserService,
+    ShoppingListService
   ],
   bootstrap: [AppComponent]
 })

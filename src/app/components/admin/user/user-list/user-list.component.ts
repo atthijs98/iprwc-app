@@ -1,13 +1,12 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { User } from '../../../../models/user.model';
-import { MatPaginator } from "@angular/material/paginator";
-import { MatSort } from "@angular/material/sort";
-import {trigger} from "@angular/animations";
-import { MatTable } from "@angular/material/table";
-import { UserListDatasource } from "./user-list-datasource";
-import {UserService} from "../../../../shared/services/user.service";
-import {AuthService} from "../../../../auth/auth.service";
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTable } from '@angular/material/table';
+import { UserListDatasource } from './user-list-datasource';
+import { UserService } from '../../../../shared/services/user.service';
+import { AuthService } from '../../../../auth/auth.service';
 
 @Component({
   selector: 'app-user-list',

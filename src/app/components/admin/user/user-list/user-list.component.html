@@ -3,7 +3,7 @@
     <!-- Id Column -->
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-      <td mat-cell *matCellDef="let row">{{row.email}}</td>
+      <td mat-cell *matCellDef="let row">{{row.username}}</td>
     </ng-container>
 
     <!-- Name Column -->
@@ -12,11 +12,15 @@
       <td mat-cell *matCellDef="let row">{{row.name}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="privilege">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Privilege</th>
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>User role</th>
       <td mat-cell *matCellDef="let row">
         <mat-form-field appearance="fill">
-          <mat-select value="{{row.role}}" (selectionChange)="changeUserRole($event, row)">
+          <mat-select *ngIf="row.roles.length > 1" value="1" (selectionChange)="changeUserRole($event, row)">
+            <mat-option value="0">User</mat-option>
+            <mat-option value="1">Admin</mat-option>
+          </mat-select>
+          <mat-select *ngIf="row.roles.length == 1" value="0" (selectionChange)="changeUserRole($event, row)">
             <mat-option value="0">User</mat-option>
             <mat-option value="1">Admin</mat-option>
           </mat-select>
@@ -44,7 +48,7 @@
   </table>
 
   <mat-paginator #paginator
-                 [length]="dataSource?.data.length"
+                 [length]="dataSource.data.length"
                  [pageIndex]="0"
                  [pageSize]="50"
                  [pageSizeOptions]="[25, 50, 100, 250]">

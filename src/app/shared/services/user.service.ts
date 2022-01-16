@@ -42,7 +42,7 @@ export class UserService {
 
   fetchUsers(): Observable<any> {
     return this.httpService.get({
-      endpoint: '/user/',
+      endpoint: '/users',
       public: false
     }).pipe(
       tap(users => {

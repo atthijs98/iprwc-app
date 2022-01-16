@@ -18,7 +18,7 @@ export class UserListDatasource extends DataSource<User> {
   }
 
   connect(): Observable<User[]> {
-    const dataMutations = [
+    let dataMutations = [
       observableOf(this.data),
       this.paginator.page,
       this.sort.sortChange

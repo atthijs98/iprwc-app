@@ -1,18 +1,18 @@
 import { DataSource } from '@angular/cdk/collections';
-import { Product } from '../../../../models/product.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { merge, Observable, of as observableOf } from 'rxjs';
+import { Item } from '../../../models/item.model';
 
-export class ProductManagementListDatasource extends DataSource<Product> {
-  data: Product[] = [];
+export class ShoppingListDatasource extends DataSource<Item> {
+  data: Item[] = [];
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor(products: Product[], paginator: MatPaginator, sort: MatSort) {
+  constructor(items: Item[], paginator: MatPaginator, sort: MatSort) {
     super();
-    this.data = products;
+    this.data = items;
     this.paginator = paginator;
     this.sort = sort;
   }
@@ -22,7 +22,7 @@ export class ProductManagementListDatasource extends DataSource<Product> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<Product[]> {
+  connect(): Observable<Item[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -48,7 +48,7 @@ export class ProductManagementListDatasource extends DataSource<Product> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: Product[]) {
+  private getPagedData(data: Item[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -57,7 +57,7 @@ export class ProductManagementListDatasource extends DataSource<Product> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Product[]) {
+  private getSortedData(data: Item[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -65,8 +65,8 @@ export class ProductManagementListDatasource extends DataSource<Product> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'englishTitle': return compare(a.englishTitle, b.englishTitle, isAsc);
-        case 'year': return compare(+a.id, +b.id, isAsc);
+        case 'englishTitle': return compare(a.product.englishTitle, b.product.englishTitle, isAsc);
+        case 'year': return compare(+a.product.id, +b.product.id, isAsc);
         default: return 0;
       }
     });
