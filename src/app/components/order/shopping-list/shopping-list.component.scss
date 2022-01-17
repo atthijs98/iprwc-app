@@ -34,6 +34,11 @@ button:disabled > mat-icon {
 .green {
   color: green;
 }
+div.checkout-button-container {
+  width: 80%;
+  margin: 20px auto;
+}
+
 @media only screen and (max-width: 600px) {
   .data-table {
     width: 100%;

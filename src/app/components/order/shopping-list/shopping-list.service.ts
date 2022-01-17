@@ -5,6 +5,7 @@ import { Item } from '../../../models/item.model';
 export class ShoppingListService {
   itemsChanged = new Subject<Item[]>();
   startedEditing = new Subject<number>();
+  private checkoutStatus: boolean = false;
   private items: Item[] = [];
 
   getProducts(): Item[] {
@@ -86,4 +87,9 @@ export class ShoppingListService {
       }
     }
   }
+
+  triggerSubject(): void {
+    this.itemsChanged.next(this.items.slice());
+  }
+
 }

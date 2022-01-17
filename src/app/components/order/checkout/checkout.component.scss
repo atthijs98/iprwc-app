@@ -1,0 +1,17 @@
+mat-card {
+  margin-top: 20px;
+  mat-card-footer {
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    button {
+      margin-right: 10px;
+    }
+  }
+}
+
+.poster {
+  max-width: 50px;
+  height: auto;
+  padding: 1.5%;
+}
