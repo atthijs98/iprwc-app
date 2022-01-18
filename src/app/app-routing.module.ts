@@ -18,6 +18,8 @@ import { UserStartComponent } from './components/admin/user/user-start/user-star
 import { OrderComponent } from './components/order/order.component';
 import { OrderStartComponent } from './components/order/order-start/order-start.component';
 import { CheckoutComponent } from './components/order/checkout/checkout.component';
+import { OrderAdminComponent } from './components/admin/order/order.component';
+import { OrderResolverService } from './shared/resolvers/order-resolver.service';
 
 const routes: Routes = [
   {path: '', redirectTo: '/products', pathMatch: 'full'},
@@ -32,6 +34,9 @@ const routes: Routes = [
       {path: '', component: ProductManagementStartComponent },
       {path: 'new', component: ProductManagementEditComponent},
       {path: ':id/edit', component: ProductManagementEditComponent}
+    ]},
+  {path: 'order-admin', component: OrderAdminComponent, data: {roles: [Role.Admin]}, canActivate: [AuthGuardService], resolve: [OrderResolverService], children: [
+      {path: '', component: OrderStartComponent },
     ]},
   {path: 'user-management', component: UserComponent, data: {roles: [Role.Admin]}, canActivate: [AuthGuardService], resolve: [UserResolverService], children: [
       {path: '', component: UserStartComponent },

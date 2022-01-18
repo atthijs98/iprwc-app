@@ -37,11 +37,13 @@ import { UserListComponent } from './components/admin/user/user-list/user-list.c
 import { UserDetailComponent } from './components/admin/user/user-detail/user-detail.component';
 import { UserService } from './shared/services/user.service';
 import { OrderComponent } from './components/order/order.component';
+import { OrderAdminComponent } from './components/admin/order/order.component';
 import { ShoppingListComponent } from './components/order/shopping-list/shopping-list.component';
 import { OrderStartComponent } from './components/order/order-start/order-start.component';
 import { CheckoutComponent } from './components/order/checkout/checkout.component';
 import { ShoppingListService } from './components/order/shopping-list/shopping-list.service';
 import { OrderService } from './components/order/order.service';
+import { OrderListComponent } from './components/admin/order/order-list/order-list.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,9 @@ import { OrderService } from './components/order/order.service';
     OrderComponent,
     ShoppingListComponent,
     OrderStartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    OrderListComponent,
+    OrderAdminComponent
   ],
   imports: [
         BrowserModule,
