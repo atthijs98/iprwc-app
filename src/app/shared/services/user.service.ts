@@ -4,11 +4,13 @@ import { HttpService } from './http.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from '../../models/user.model';
+import {Role} from "../../models/roles.model";
 
 @Injectable()
 export class UserService {
   userSelected = new EventEmitter<User>();
   userChanged = new Subject<User[]>();
+  currentUser: User;
 
   private users: User[] = [];
 
@@ -72,6 +74,18 @@ export class UserService {
         this.users[i] = user;
         this.userChanged.next(this.users.slice());
       }
+    }
+  }
+
+  setCurrentUser(data: any): void {
+    this.currentUser = new User(data.id, data.username, data.name, this.parseUserRoles(data.roles));
+  }
+
+  parseUserRoles(data: object): number {
+    if (Object.keys(data).length > 1) {
+       return Role.Admin;
+    } else {
+       return Role.User;
     }
   }
 

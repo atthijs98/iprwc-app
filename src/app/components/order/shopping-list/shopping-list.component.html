@@ -68,6 +68,6 @@
 </div>
 
 <div class="checkout-button-container">
-  <button mat-raised-button color="accent" (click)="goToCheckout()" class="checkout-button" [disabled]="disabled">Go to checkout</button>
+  <button mat-raised-button color="accent" (click)="goToCheckout()" class="checkout-button" [disabled]="disabled || items.length === 0">Go to checkout</button>
 </div>
 

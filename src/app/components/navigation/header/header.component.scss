@@ -1,6 +1,14 @@
 a {
   text-decoration: none;
   color: white;
+  cursor: pointer;
+}
+
+div.left-menu {
+  a {
+    display: inline-block;
+    padding: 0 16px;
+  }
 }
 
 a:hover, a:active{
@@ -11,6 +19,10 @@ a:hover, a:active{
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+mat-icon {
+  line-height: inherit;
 }
 
 .invisible {

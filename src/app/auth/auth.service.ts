@@ -5,6 +5,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { LoginInterface } from '../interfaces/login.interface';
 import { HttpService } from '../shared/services/http.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from '../shared/services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class AuthService {
   constructor(private router: Router,
               public jwtHelper: JwtHelperService,
               private httpService: HttpService,
-              private snackbar: MatSnackBar) {
+              private snackbar: MatSnackBar,
+              private userService: UserService) {
 
     if (localStorage.getItem('jwtoken') !== null && this.httpHeaders.get('Token') === null) {
       // @ts-ignore
@@ -50,6 +52,7 @@ export class AuthService {
           const name = data.body.name;
           const roles = data.body.roles;
           const id = data.body.id;
+          this.setCurrentUser(data.body);
           localStorage.setItem('jwtoken', token);
           localStorage.setItem('name', name);
           AuthService.setRoles(roles);
@@ -62,6 +65,10 @@ export class AuthService {
           });
         });
     }
+  }
+
+  setCurrentUser(data: object): void {
+    this.userService.setCurrentUser(data);
   }
 
   public isAuthenticated(): boolean {

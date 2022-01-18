@@ -41,6 +41,7 @@ import { ShoppingListComponent } from './components/order/shopping-list/shopping
 import { OrderStartComponent } from './components/order/order-start/order-start.component';
 import { CheckoutComponent } from './components/order/checkout/checkout.component';
 import { ShoppingListService } from './components/order/shopping-list/shopping-list.service';
+import { OrderService } from './components/order/order.service';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { ShoppingListService } from './components/order/shopping-list/shopping-l
     JwtHelperService,
     GeneralStateService,
     ProductService,
+    OrderService,
     UserService,
     ShoppingListService
   ],

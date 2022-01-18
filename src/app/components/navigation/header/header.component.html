@@ -4,25 +4,25 @@
       <mat-icon>menu</mat-icon>
     </button>
   </div>
-  <div>
+  <div class="left-menu">
     <a [routerLink]="['/']">Home</a>
+    <a [routerLink]="['/products']">Products</a>
+    <a [ngClass]="{invisible: !(this.authService.isAuthenticated() && this.authService.isAuthorized())}" [routerLink]="['/admin']">Admin panel</a>
   </div>
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
     <ul fxLayout fxLayoutGap="15px" class="navigation-items">
-      <li>
-        <a [routerLink]="['/products']">Products</a>
-      </li>
-      <li [ngClass]="{invisible: !(this.authService.isAuthenticated() && this.authService.isAuthorized())}" >
-        <a [routerLink]="['/admin']">Admin panel</a>
-      </li>
       <li routerLinkActive="active">
-        <a [routerLink]="['/order']">Shopping cart</a>
+        <a [routerLink]="['/order']">
+          <mat-icon>shopping_cart</mat-icon>
+        </a>
       </li>
       <li [ngClass]="{invisible: !(this.authService.isAuthenticated())}">
-        <a *ngIf="this.authService.getName()" [routerLink]="['/profile/' + this.authService.getUserId() ]">{{ this.authService.getName()}}</a>
+        <a *ngIf="this.authService.getName()" [routerLink]="['/profile/' + this.authService.getUserId() ]">
+          <mat-icon>account_circle</mat-icon>
+        </a>
       </li>
       <li [ngClass]="{invisible: !(this.authService.isAuthenticated())}">
-        <a (click)="logout()">Logout</a>
+        <a (click)="logout()"><mat-icon>power_settings_new</mat-icon></a>
       </li>
     </ul>
   </div>
