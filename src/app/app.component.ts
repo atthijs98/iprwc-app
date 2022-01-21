@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private cdRef: ChangeDetectorRef, private generalStateService: GeneralStateService) {
     this.router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
-        this.showHead = !(event.url === '/login' || event.url === '/register' || event.url === '/' || event.url === '/home');
+        this.showHead = !(event.url === '/login' || event.url === '/register');
         this.cdRef.detectChanges();
       }
     });

@@ -33,7 +33,6 @@ export class OrderListComponent implements OnInit, OnDestroy {
       }
     );
     this.orders = this.orderService.getOrders();
-    console.log(this.orders);
     this.dataSource = new OrderListDatasource(this.orders, this.paginator, this.sort, this.userService);
   }
 
@@ -46,7 +45,6 @@ export class OrderListComponent implements OnInit, OnDestroy {
   }
 
   getEmail(userId: number): string {
-    console.log(this.userService.getUser(userId).email);
     return this.userService.getUser(userId).email;
   }
 }

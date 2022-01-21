@@ -38,7 +38,6 @@ export class OrderService {
   }
 
   addOrder(order: Order): Subscription {
-    console.log(order);
     return this.httpService.post({
       endpoint: '/order',
       public: false,

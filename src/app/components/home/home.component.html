@@ -1,0 +1,65 @@
+<div class="container">
+  <h1 class="black-text">Welkom in de Cinestore</h1>
+  <div class="carousel">
+    <mat-carousel
+      timings="200ms ease-in"
+      [autoplay]="true"
+      [interval]="5000"
+      color="primary"
+      maxWidth="auto"
+      [proportion]="45"
+      [hideIndicators]="false"
+      [hideArrows]="true"
+      [maintainAspectRatio]="true"
+    >
+      <mat-carousel-slide
+        *ngFor="let slide of slides; let i = index"
+        [image]="slide.path"
+        [hideOverlay]="false"
+      >
+      </mat-carousel-slide>
+    </mat-carousel>
+  </div>
+
+  <div class="grid">
+    <div class="grid-item">
+      <a [routerLink]="['/products']" class="featuredsingle">
+        <div class="featuredsingle__title">
+          <h3 class="header_lvl2 tussock">Alle Films</h3>
+        </div>
+        <div class="featuredsingle__img">
+          <img src="https://s3.amazonaws.com/criterion-production/films/84514daa31d11ecc8efb89a53abba2f8/u6uT9NDu4YUQGebS2sXinyxWiNLJIp_large.jpg" alt="Amarcord">
+        </div>
+        <div class="featuredsingle__content">
+          <p>Bekijk de volledige collectie</p>
+        </div>
+      </a>
+    </div>
+    <div class="grid-item">
+      <a [routerLink]="['/products']" class="featuredsingle">
+        <div class="featuredsingle__title">
+          <h3 class="header_lvl2 tussock">Nieuwe Films</h3>
+        </div>
+        <div class="featuredsingle__img">
+          <img src="https://s3.amazonaws.com/criterion-production/films/dfdd32ea78dc954d8cef1b54e34acbf0/sCfUtouYZPKwTEfBNRMEntUVk572AT_large.jpg" alt="Mulholland dr">
+        </div>
+        <div class="featuredsingle__content">
+          <p>Onze nieuwste Blu-rays, en 4K Ultra HD discs</p>
+        </div>
+      </a>
+    </div>
+    <div class="grid-item">
+      <a [routerLink]="['/products']" class="featuredsingle">
+        <div class="featuredsingle__title">
+          <h3 class="header_lvl2 tussock">Binnekort verkrijgbaar</h3>
+        </div>
+        <div class="featuredsingle__img">
+          <img src="https://s3.amazonaws.com/criterion-production/films/7d4528ac7b6e55c00a311bf6df17241c/01yKlantdDkSJznJi7hbRVIUywuLv9_large.jpg" alt="Le Cercle rouge">
+        </div>
+        <div class="featuredsingle__content">
+          <p>Preoder nu</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

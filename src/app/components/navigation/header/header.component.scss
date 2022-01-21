@@ -1,18 +1,22 @@
 a {
   text-decoration: none;
-  color: white;
+  color: #252525;
   cursor: pointer;
+  font-size: 20px;
 }
-
+mat-toolbar {
+  background-color: transparent;
+}
 div.left-menu {
   a {
     display: inline-block;
     padding: 0 16px;
+    font-family: Mercury, serif;
   }
 }
 
 a:hover, a:active{
-  color: lightgray;
+  color: #b4841e;
 }
 
 .navigation-items{
@@ -34,3 +38,5 @@ mat-icon {
     border-radius: 0px;
   }
 }
+
+

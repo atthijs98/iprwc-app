@@ -62,7 +62,7 @@ export class AuthService {
           localStorage.setItem('name', name);
           AuthService.setRoles(roles);
           localStorage.setItem('id', id);
-          this.router.navigate(['/products']).then();
+          this.router.navigate(['/home']).then();
         },
         () => {
           this.snackbar.open('Er ging iets mis met inloggen, probeer het later opnieuw', '',{

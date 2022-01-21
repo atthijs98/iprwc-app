@@ -9,7 +9,7 @@
 }
 
 button, mat-icon {
-  color: #3f51b5;
+  color: #b4841e;
   font-size: 20px;
 }
 
@@ -21,5 +21,13 @@ button {
 @media only screen and (max-width: 700px) {
   #main {
     grid-template-columns: 1fr;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #main {
+    width: 90% !important;
+    grid-row-gap: 20px !important;
   }
 }

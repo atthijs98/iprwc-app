@@ -1,0 +1,127 @@
+div.container {
+  margin: 0 auto;
+  width: 80%;
+
+  h1 {
+    text-align: center;
+    font-size: 80px;
+    padding: 48px 80px 0;
+    margin: 0 0 96px;
+    font-family: Mercury, serif;
+  }
+
+  div.carousel {
+    height: 560px;
+
+    mat-carousel {
+      mat-carousel-slide {
+
+      }
+    }
+  }
+
+  div.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 40px;
+    grid-row-gap: 10px;
+
+    div.grid-item {
+      max-width: 100%;
+
+      .featuredsingle {
+        text-decoration: none;
+        margin: 0 2px 0 0;
+        padding: 56px 0 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        position: relative;
+        min-height: 140px;
+        background: #fff;
+        transition: .3s;
+      }
+
+      .featuredsingle:hover {
+        box-shadow: 0 0 11px rgba(33,33,33,.2);
+      }
+
+      .featuredsingle div.featuredsingle__img {
+        width: 100%;
+        float: none;
+        margin: 0 0 32px;
+        order: 2;
+        img {
+          width: 50%;
+          margin: 0 auto;
+          vertical-align: middle;
+          display: block;
+          max-width: 100%;
+          height: auto;
+        }
+      }
+
+      .featuredsingle .featuredsingle__title {
+        margin: 0 0 32px;
+        padding: 0 32px;
+        color: #b4841e;
+        line-height: 1.23;
+        text-align: center;
+        order: 1;
+        h3 {
+          letter-spacing: 1px;
+          text-transform: uppercase
+        }
+      }
+
+      .featuredsingle .featuredsingle__content {
+        font-size: 16px;
+        font-weight: 400;
+        font-family: Mercury-Italic, serif;
+        font-style: italic;
+        font-stretch: normal;
+        line-height: 1.35;
+        color: #8e8e8e;
+        margin: 0 auto;
+        width: 64%;
+        text-align: center;
+        order: 3;
+      }
+
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  div.carousel {
+    height: 350px !important;
+  }
+
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 80px !important;
+    line-height: 1;
+    padding: 32px 120px 0 !important;
+    margin: 0 0 64px !important;
+  }
+  div.grid {
+    grid-template-columns: 1fr !important;
+  }
+  div.carousel {
+    height: 300px !important;
+  }
+}
+@media (max-width: 480px) {
+  h1 {
+    font-size: 56px !important;
+    line-height: .86;
+    padding: 16px 32px 0 !important;
+    margin: 0 0 30px !important;
+  }
+  div.carousel {
+    height: 210px !important;
+  }
+}
+

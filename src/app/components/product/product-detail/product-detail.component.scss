@@ -13,6 +13,7 @@ div.card-body {
 section.trailer {
   iframe {
     width: 100%;
+    height: 400px;
   }
 }
 youtube-player {
@@ -28,4 +29,20 @@ span.directed-by {
 
 span.director-loop {
   font-weight: bold;
+}
+@media only screen and (max-width: 1000px) {
+  section.trailer {
+    iframe {
+      width: 100%;
+      height: 350px !important;
+    }
+  }
+}
+@media only screen and (max-width: 480px) {
+  section.trailer {
+    iframe {
+      width: 100%;
+      height: 250px !important;
+    }
+  }
 }

@@ -2,10 +2,22 @@ app-product-item {
   /*display: contents;*/
 }
 
-.row.display-flex {
-  display: flex;
-  flex-wrap: wrap;
+//.row.display-flex {
+//  display: flex;
+//  flex-wrap: wrap;
+//}
+//.row.display-flex > [class*='col-'] {
+//  flex-grow: 1;
+//}
+div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
 }
-.row.display-flex > [class*='col-'] {
-  flex-grow: 1;
+
+@media (max-width: 480px) {
+  div {
+    grid-template-columns: 1fr;
+  }
 }

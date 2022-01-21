@@ -2,19 +2,19 @@
   <mat-card-content>
     <form #formGroup="ngForm" (ngSubmit)="onSubmit()">
       <h2>Log In</h2>
-      <mat-card-subtitle> Sign in with your account</mat-card-subtitle>
+      <mat-card-subtitle> Log hier in met uw profiel</mat-card-subtitle>
       <mat-form-field class="full-width-input">
-        <mat-label>Enter your email</mat-label>
+        <mat-label>Voer uw email in</mat-label>
         <input matInput placeholder="johnDoe@example.com" id="username" type="email" name="username" maxlength="255"  ngModel required email #email="ngModel">
         <mat-error>
-          Please provide a valid email address
+          Voer alstublieft een geldig e-mailadres in.
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
-        <mat-label>Enter your password</mat-label>
+        <mat-label>Voer uw wachtwoord in</mat-label>
         <input matInput id="password" type="password" name="password" maxlength="255"  ngModel required #password="ngModel">
         <mat-error>
-          Please provide a valid password
+          Voer alstublieft een geldig wachtwoord in.
         </mat-error>
       </mat-form-field>
       <button mat-raised-button color="primary" id="login"
@@ -22,6 +22,6 @@
     </form>
   </mat-card-content>
   <mat-card-footer>
-    <mat-card-subtitle>Don't have an account? <a [routerLink]="['/register']">Sign up here</a></mat-card-subtitle>
+    <mat-card-subtitle>Heeft u nog geen profiel? <a [routerLink]="['/register']">Registreer hier</a></mat-card-subtitle>
   </mat-card-footer>
 </mat-card>

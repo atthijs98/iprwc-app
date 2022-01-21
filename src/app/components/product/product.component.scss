@@ -16,3 +16,20 @@ ul.grid-container {
     grid-template-columns: auto;
   }
 }
+
+.container {
+  h1 {
+    letter-spacing: 1.33px;
+    font-size: 48px;
+    //font-weight: 700;
+    text-transform: uppercase;
+    font-family: Gotham-Narrow-Bold, serif;
+    color: #252525;
+  }
+  p {
+    font-size: 18px;
+    letter-spacing: -.3px;
+    line-height: 1.6;
+    color: #252525;
+  }
+}

@@ -45,6 +45,7 @@ import { ShoppingListService } from './components/order/shopping-list/shopping-l
 import { OrderService } from './components/order/order.service';
 import { OrderListComponent } from './components/admin/order/order-list/order-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     CheckoutComponent,
     OrderListComponent,
     OrderAdminComponent,
-    ProfileComponent
+    ProfileComponent,
+    HomeComponent
   ],
   imports: [
         BrowserModule,

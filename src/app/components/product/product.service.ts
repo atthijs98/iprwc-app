@@ -30,6 +30,18 @@ export class ProductService {
     }
   }
 
+  getPromoProducts(): Product[] {
+    let promo = [];
+    for (let i = 0; i < this.products.length; i++) {
+      if (this.products[i].englishTitle === "Pan's Labyrinth" ||
+        this.products[i].englishTitle === "La Haine" ||
+        this.products[i].englishTitle === "Chungking Express") {
+        promo.push (this.products[i]);
+      }
+    }
+    return promo;
+  }
+
   removeProduct(id: number): void {
     for (let i = 0; i < this.products.length; i++) {
       if (id === this.products[i].id) {

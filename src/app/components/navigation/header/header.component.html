@@ -1,13 +1,13 @@
-<mat-toolbar color="primary">
+<mat-toolbar>
   <div fxHide.gt-xs>
     <button mat-icon-button (click)="onToggleSidenav()">
       <mat-icon>menu</mat-icon>
     </button>
   </div>
-  <div class="left-menu">
-    <a [routerLink]="['/']">Home</a>
-    <a [routerLink]="['/products']">Products</a>
-    <a [ngClass]="{invisible: !(this.authService.isAuthenticated() && this.authService.isAuthorized())}" [routerLink]="['/admin']">Admin panel</a>
+  <div class="left-menu" fxHide.xs>
+    <a [routerLink]="['/home']">Home</a>
+    <a [routerLink]="['/products']">Producten</a>
+    <a [ngClass]="{invisible: !(this.authService.isAuthenticated() && this.authService.isAuthorized())}" [routerLink]="['/admin']">Admin omgeving</a>
   </div>
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
     <ul fxLayout fxLayoutGap="15px" class="navigation-items">

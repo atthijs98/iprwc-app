@@ -2,33 +2,33 @@
   <mat-card-content>
     <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
       <h2>Checkout</h2>
-      <mat-card-subtitle> Fill in the required form fields</mat-card-subtitle>
+      <mat-card-subtitle> Vul de verplichten velden in</mat-card-subtitle>
       <mat-form-field class="full-width-input">
-        <mat-label>Enter your address</mat-label>
+        <mat-label>Voer uw adres in</mat-label>
         <input matInput placeholder="Burgemeester dijkstraat 23" type="text" formControlName="address" maxlength="100" required autocomplete="off">
         <mat-error *ngIf="checkoutForm.get('address')?.hasError('required')">
-          You must enter an address
+          Adres is verplicht
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
-        <mat-label>Enter your zipcode</mat-label>
+        <mat-label>Voer uw postcode in</mat-label>
         <input matInput placeholder="2536 JK" type="text" formControlName="zipcode" maxlength="100" required autocomplete="off">
         <mat-error *ngIf="checkoutForm.get('zipcode')?.hasError('required')">
-          You must enter a zipcode
+          Postcode is verplicht
         </mat-error>
         <mat-error *ngIf="checkoutForm.get('zipcode')?.hasError('pattern')">
-          Zipcode is not valid
+          Postcode is niet geldig
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
-        <mat-label>Enter your city</mat-label>
+        <mat-label>Voer uw woonplaats in</mat-label>
         <input matInput placeholder="Amsterdam" type="text" formControlName="city" maxlength="100" required autocomplete="off">
         <mat-error *ngIf="checkoutForm.get('city')?.hasError('required')">
-          You must enter a city
+          Woonplaats is verplicht
         </mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>Payment method</mat-label>
+        <mat-label>Betaalmethode</mat-label>
         <mat-select formControlName="paymentMethod" required>
           <mat-option *ngFor="let method of paymentMethods" [value]="method.name">
             {{ method.name }}
@@ -36,10 +36,10 @@
         </mat-select>
       </mat-form-field>
       <button mat-raised-button color="primary" id="login"
-              type="submit" [disabled]="checkoutForm.invalid">Place order</button>
+              type="submit" [disabled]="checkoutForm.invalid">Bestelling plaatsen</button>
     </form>
   </mat-card-content>
   <mat-card-footer>
-    <button mat-raised-button color="warn" (click)="cancelCheckout()">Cancel checkout</button>
+    <button mat-raised-button color="warn" (click)="cancelCheckout()">Bestelling annuleren</button>
   </mat-card-footer>
 </mat-card>
