@@ -6,7 +6,7 @@
   </div>
   <div class="left-menu" fxHide.xs>
     <a [routerLink]="['/home']">Home</a>
-    <a [routerLink]="['/products']">Producten</a>
+    <a [routerLink]="['/products']">Onze Collectie</a>
     <a [ngClass]="{invisible: !(this.authService.isAuthenticated() && this.authService.isAuthorized())}" [routerLink]="['/admin']">Admin omgeving</a>
   </div>
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
