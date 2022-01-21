@@ -25,7 +25,7 @@ import {UserOrderResolverService} from "./shared/resolvers/user-order-resolver.s
 import {HomeComponent} from "./components/home/home.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'home', component: HomeComponent, resolve: [ProductResolverService]},
   { path: 'profile/:userId', component: ProfileComponent, canActivate: [AuthGuardService], resolve: [UserOrderResolverService]},
   {path: 'login', component: LoginComponent},

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendUrl: '194.163.161.228:2492'
+  backendUrl: 'http://194.163.161.228:2492'
 };
 
 /*
