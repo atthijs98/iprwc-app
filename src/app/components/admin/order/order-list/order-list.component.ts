@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { OrderListDatasource } from './order-list.datasource';
 import { OrderService } from '../../../order/order.service';
+import { UserService } from '../../../../shared/services/user.service';
 
 @Component({
   selector: 'app-order-list',
@@ -22,17 +23,18 @@ export class OrderListComponent implements OnInit, OnDestroy {
 
   displayedColumns = ['date', 'user', 'total', 'action'];
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.subscription = this.orderService.ordersChanged.subscribe(
       (orders: Order[]) => {
         this.orders = orders;
-        this.dataSource = new OrderListDatasource(orders, this.paginator, this.sort);
+        this.dataSource = new OrderListDatasource(orders, this.paginator, this.sort, this.userService);
       }
     );
     this.orders = this.orderService.getOrders();
-    this.dataSource = new OrderListDatasource(this.orders, this.paginator, this.sort);
+    console.log(this.orders);
+    this.dataSource = new OrderListDatasource(this.orders, this.paginator, this.sort, this.userService);
   }
 
   ngOnDestroy(): void {
@@ -41,5 +43,10 @@ export class OrderListComponent implements OnInit, OnDestroy {
 
   generatePdf(): void {
     console.log("bleep bloop PDF");
+  }
+
+  getEmail(userId: number): string {
+    console.log(this.userService.getUser(userId).email);
+    return this.userService.getUser(userId).email;
   }
 }

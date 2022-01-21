@@ -20,9 +20,12 @@ import { OrderStartComponent } from './components/order/order-start/order-start.
 import { CheckoutComponent } from './components/order/checkout/checkout.component';
 import { OrderAdminComponent } from './components/admin/order/order.component';
 import { OrderResolverService } from './shared/resolvers/order-resolver.service';
+import { ProfileComponent } from './components/profile/profile.component';
+import {UserOrderResolverService} from "./shared/resolvers/user-order-resolver.service";
 
 const routes: Routes = [
   {path: '', redirectTo: '/products', pathMatch: 'full'},
+  { path: 'profile/:userId', component: ProfileComponent, canActivate: [AuthGuardService], resolve: [UserOrderResolverService]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'products', component: ProductComponent, canActivate: [AuthGuardService], resolve: [ProductResolverService], children: [

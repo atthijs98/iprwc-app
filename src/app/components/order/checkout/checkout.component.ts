@@ -47,10 +47,10 @@ export class CheckoutComponent implements OnInit {
     if (this.checkoutForm.valid) {
       let formValues = this.checkoutForm.value;
       formValues.orderNumber = this.orderService.generateOrderNumber();
-      formValues.total = this.shoppingListService.getTotal();
-      formValues.user = this.userService.currentUser;
+      formValues.totalPrice = this.shoppingListService.getTotal();
+      formValues.userId = +this.authService.getUserId();
       formValues.items = this.items;
-      // this.orderService.addOrder(formValues);
+      this.orderService.addOrder(formValues);
       this.shoppingListService.flush();
     }
   }

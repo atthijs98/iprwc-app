@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 @Injectable()
 export class OrderService {
   ordersChanged = new Subject<Order[]>();
+  userOrdersChanged = new Subject<Order[]>()
   private orders: Order[] = [];
+  private userOrders: Order[] = [];
 
   constructor(private httpService: HttpService,
               private snackbar: MatSnackBar,
@@ -18,6 +20,10 @@ export class OrderService {
 
   getOrders(): Order[] {
     return this.orders.slice();
+  }
+
+  getUserOrders(): Order[] {
+    return this.userOrders.slice();
   }
 
   getOrder(id: number): Order | undefined {
@@ -32,6 +38,7 @@ export class OrderService {
   }
 
   addOrder(order: Order): Subscription {
+    console.log(order);
     return this.httpService.post({
       endpoint: '/order',
       public: false,
@@ -58,6 +65,11 @@ export class OrderService {
     this.ordersChanged.next(this.orders.slice());
   }
 
+  setUserOrders(orders: Order[]): void {
+    this.userOrders = orders;
+    this.userOrdersChanged.next(this.userOrders.slice());
+  }
+
   fetchOrders(): Observable<unknown> {
     return this.httpService.get({
       endpoint: '/order/',
@@ -68,6 +80,18 @@ export class OrderService {
       }),
       catchError(this.handleError)
     );
+  }
+
+  fetchOrdersByUser(): Observable<any> {
+    return this.httpService.get({
+      endpoint: '/order/me',
+      public: false
+    }).pipe(
+      tap(orders => {
+        this.setUserOrders(orders.body);
+      }),
+      catchError(this.handleError)
+    )
   }
 
   generateOrderNumber(): string {

@@ -15,6 +15,10 @@ export class UserService {
   private users: User[] = [];
 
   constructor(private httpService: HttpService, private snackBar: MatSnackBar) {
+    const currentUser = localStorage.getItem('user');
+    if (currentUser !== null) {
+      this.currentUser = JSON.parse(currentUser);
+    }
   }
 
   setUsers(users: User[]): void {
@@ -81,12 +85,35 @@ export class UserService {
     this.currentUser = new User(data.id, data.username, data.name, this.parseUserRoles(data.roles));
   }
 
+  getCurrentUser(): User {
+    return this.currentUser;
+  }
+
   parseUserRoles(data: object): number {
     if (Object.keys(data).length > 1) {
        return Role.Admin;
     } else {
        return Role.User;
     }
+  }
+
+  changeUserPassword(password: object) {
+    return this.httpService.put({
+      endpoint: '/user/password/',
+      public: false,
+      body: JSON.stringify(password)
+    }).subscribe(
+      data => {
+        this.snackBar.open('Wachtwoord succesvol gewijzigd', '', {
+          duration: 3000
+        })
+      },
+      () => {
+        this.snackBar.open('Er ging iets mis bij het wijzigen van je wachtwoord, probeer het later opnieuw', '', {
+          duration: 3000
+        })
+      }
+    )
   }
 
   changeUserPrivilege(userId: number, userPrivilege: number, newUser: User): Subscription {

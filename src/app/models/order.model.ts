@@ -10,10 +10,11 @@ export class Order {
   paymentMethod: string;
   totalPrice: number;
   items: Item[];
-  user: User;
-  date: Date;
+  userId: number;
+  // user: User;
+  dateCreated: Date;
 
-  constructor(id: number, orderNumber: string, address: string, zipcode: string, city: string, paymentMethod: string, totalPrice: number, items: Item[], user: User, date: Date) {
+  constructor(id: number, orderNumber: string, address: string, zipcode: string, city: string, paymentMethod: string, totalPrice: number, items: Item[], userId: number, date: Date) {
     this.id = id;
     this.orderNumber = orderNumber;
     this.address = address;
@@ -22,7 +23,7 @@ export class Order {
     this.paymentMethod = paymentMethod;
     this.totalPrice = totalPrice;
     this.items = items;
-    this.user = user;
-    this.date = date;
+    this.userId = userId;
+    this.dateCreated = date;
   }
 }

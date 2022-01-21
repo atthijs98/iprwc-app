@@ -6,6 +6,7 @@ import { LoginInterface } from '../interfaces/login.interface';
 import { HttpService } from '../shared/services/http.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from '../shared/services/user.service';
+import {User} from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,7 @@ export class AuthService {
       // @ts-ignore
       this.httpHeaders = this.httpHeaders.append('Token', localStorage.getItem('jwtoken'));
     }
+
   }
   private httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json'
@@ -52,7 +54,10 @@ export class AuthService {
           const name = data.body.name;
           const roles = data.body.roles;
           const id = data.body.id;
-          this.setCurrentUser(data.body);
+
+          this.userService.setCurrentUser(data.body);
+          localStorage.setItem('user', JSON.stringify(this.userService.getCurrentUser()));
+
           localStorage.setItem('jwtoken', token);
           localStorage.setItem('name', name);
           AuthService.setRoles(roles);
@@ -89,6 +94,14 @@ export class AuthService {
 
   isAuthorized(): boolean {
     return parseInt(<string>localStorage.getItem('role'), 10) > 0;
+  }
+
+  public compareTokens(id: number): boolean {
+    if (Number(this.getUserId()) === id) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public getUserId(): string {

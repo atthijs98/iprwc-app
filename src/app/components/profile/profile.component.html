@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-content>
+    <h2>{{this.currentUser.name }}</h2>
+    <mat-card-subtitle>Dit is een gebruikersprofiel. Deze ruimte is gereserveerd voor relevante gebruikersinformatie.
+    </mat-card-subtitle>
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Mijn Bestellingen
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list *ngIf="orders.length > 0">
+          <mat-list-item>
+            <ul>
+              <li><b>Datum</b></li>
+              <li><b>Bestelling nummer</b></li>
+              <li><b>Betaalmethode</b></li>
+              <li><b>Totale prijs</b></li>
+            </ul>
+          </mat-list-item>
+          <mat-list-item *ngFor="let orderEl of orders">
+            <ul>
+              <li>{{orderEl.dateCreated}}</li>
+              <li>{{orderEl.orderNumber}}</li>
+              <li>{{orderEl.paymentMethod}}</li>
+              <li>€ {{orderEl.totalPrice}}</li>
+            </ul>
+          </mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+</mat-card>
