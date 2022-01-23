@@ -5,6 +5,7 @@ import { HttpService } from '../../shared/services/http.service';
 import { catchError, tap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ShoppingListService } from '../order/shopping-list/shopping-list.service';
+import {ProductImage} from "../../models/productImage.model";
 
 @Injectable()
 export class ProductService {
@@ -136,6 +137,74 @@ export class ProductService {
       }),
       catchError(this.handleError)
       );
+  }
+
+  removeImage(productId: number, imageId: number): void {
+    for (let i = 0; i < this.products.length; i++) {
+      if (productId === this.products[i].id) {
+        for (let j = 0; j < this.products[i].productImages.length; j++) {
+          if (imageId === this.products[i].productImages[j].id) {
+            this.products[i].productImages.splice(j, 1);
+            this.productsChanged.next(this.products.slice());
+          }
+        }
+      }
+    }
+    this.deleteImage(imageId);
+  }
+
+  removeDirector(productId: number, directorId: number): void {
+    for (let i = 0; i < this.products.length; i++) {
+      if (productId === this.products[i].id) {
+        for (let j = 0; j < this.products[i].productDirectors.length; j++) {
+          if (directorId === this.products[i].productDirectors[j].id) {
+            this.products[i].productDirectors.splice(j, 1);
+            this.productsChanged.next(this.products.slice());
+          }
+        }
+      }
+    }
+    this.deleteDirector(directorId);
+  }
+
+  deleteDirector(directorId: number): void {
+    this.httpService.delete({
+      endpoint: `/admin/productDirector/${directorId}`,
+      public: false
+    }).subscribe({
+      next: data => {
+        this.snackbar.open('Regisseur successvol verwijderd.','', {
+          duration: 3000
+        })
+      },
+      error: error => {
+        if (error.status !== 200) {
+          this.snackbar.open('Er ging iets mis bij het verwijderen, probeer het later opnieuw')
+        } else {
+          this.snackbar.open('Regisseur successvol verwijderd.')
+        }
+      }
+    })
+  }
+
+  deleteImage(imageId: number): void {
+    this.httpService.delete({
+      endpoint: `/admin/productImage/${imageId}`,
+      public: false
+    }).subscribe({
+      next: data => {
+        this.snackbar.open('Afbeelding successvol verwijderd.','', {
+          duration: 3000
+        })
+      },
+      error: error => {
+        if (error.status !== 200) {
+          this.snackbar.open('Er ging iets mis bij het verwijderen, probeer het later opnieuw')
+        } else {
+          this.snackbar.open('Afbeelding successvol verwijderd.')
+        }
+      }
+    })
   }
 
   addToShoppingList(product: Product): void {

@@ -23,7 +23,7 @@ div.container {
   div.grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 40px;
+    grid-column-gap: 5px;
     grid-row-gap: 10px;
 
     div.grid-item {

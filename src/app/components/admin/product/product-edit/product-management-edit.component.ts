@@ -169,10 +169,10 @@ export class ProductManagementEditComponent implements OnInit {
       this.productForm.value.id = this.id;
       this.productService.updateProduct(this.id, this.productForm.value);
       for (let director of this.directorsToBeDeleted) {
-        // this.httpService.deleteDirector(director);
+        this.productService.removeDirector(this.id, director);
       }
       for (let image of this.imagesToBeDeleted) {
-        // this.httpService.deleteImage(this.id, image);
+        this.productService.removeImage(this.id, image);
       }
     } else {
       this.productService.addProduct(this.productForm.value);

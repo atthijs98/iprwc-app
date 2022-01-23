@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   backendUrl: 'http://194.163.161.228:2492'
+  //backendUrl: 'http://localhost:8080'
 };
 
 /*
