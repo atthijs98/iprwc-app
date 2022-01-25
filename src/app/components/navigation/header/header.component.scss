@@ -30,7 +30,7 @@ mat-icon {
 }
 
 .invisible {
-  display: none;
+  display: none !important;
 }
 
 @media(max-width: 959px){
