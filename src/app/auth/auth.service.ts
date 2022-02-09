@@ -50,18 +50,9 @@ export class AuthService {
         body: userToBeLoggedIn
       }).subscribe(
         data => {
-          const token = data.headers.get('Authorization');
-          const name = data.body.name;
-          const roles = data.body.roles;
-          const id = data.body.id;
-
+          localStorage.setItem('jwtoken', data.headers.get('Authorization'));
+          localStorage.setItem('name', data.body.name);
           this.userService.setCurrentUser(data.body);
-          localStorage.setItem('user', JSON.stringify(this.userService.getCurrentUser()));
-
-          localStorage.setItem('jwtoken', token);
-          localStorage.setItem('name', name);
-          AuthService.setRoles(roles);
-          localStorage.setItem('id', id);
           this.router.navigate(['/home']).then();
         },
         () => {
